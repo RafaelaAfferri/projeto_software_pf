@@ -45,7 +45,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: rafaelaafferri/prova-pf:${{ github.sha }}
+        tags: rafaelaafferri/projeto_software_pf:${{ github.sha }}
 
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
@@ -55,6 +55,6 @@ jobs:
         key: ${{ secrets.KEY_TEST }}
         port: 22
         script: |
-          docker stop prova-pf
-          docker rm --force prova-pf
-          docker run -d -p 8082:8082 --network=rede --name prova-pf rafaelaafferri/prova-pf:${{ github.sha }}
+          docker stop projeto_software_pf
+          docker rm --force projeto_software_pf
+          docker run -d -p 8082:8082 --network=rede --name projeto_software_pf rafaelaafferri/projeto_software_pf:${{ github.sha }}
